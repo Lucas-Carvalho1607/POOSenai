@@ -22,11 +22,6 @@ public class Veiculo {
 		this.quilometragem );
     }
 
-    public void calculaIPVA (){
-        //Método que calcla IPVA
-
-
-    }
     public void acelerar () {
         //um veiculo acelera
 
