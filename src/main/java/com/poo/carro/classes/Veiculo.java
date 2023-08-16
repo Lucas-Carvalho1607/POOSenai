@@ -13,12 +13,12 @@ public class Veiculo {
     
     //Comportamentos
     public void imprimeDocumento(){
-        System.out.println(this.proprietario + 
-		this.renavam +
-		this.marca +
-		this.modelo +
-		this.ano +
-		this.cor +
+        System.out.println(this.proprietario + "\n" +
+		this.renavam + "\n" +
+		this.marca + "\n" +
+		this.modelo + "\n" +
+		this.ano + "\n" +
+		this.cor + "\n" +
 		this.quilometragem );
     }
 
