@@ -46,8 +46,8 @@ public class ProjetoApplication {
 		System.out.println("Senha: ");
 		senha = sc.nextLine();
 		
-		while(!logar(login, senha, lista_cliente)){
-			logar(login, senha, lista_cliente);
+		while(!logar(lista_cliente)){
+			logar(lista_cliente);
 		}
 		
 		
@@ -57,12 +57,14 @@ public class ProjetoApplication {
 		}
 			
 		}
-		public static boolean logar(String nome, String senha, ArrayList<Cliente> lista_cliente ){
+		public static boolean logar(ArrayList<Cliente> lista_cliente ){
 			Scanner sc2 = new Scanner(System.in);
+			String nome, senha;
 			System.out.println("Bem vindo" + "\n" + "Login" );
 			nome = sc2.nextLine();
 			System.out.println("Senha: ");
 			senha = sc2.nextLine();
+			
 			for (int i = 0; i < lista_cliente.size(); i++){
 				if (nome.equals(lista_cliente.get(i).getLogin())){
 				System.out.println("nome correto");
