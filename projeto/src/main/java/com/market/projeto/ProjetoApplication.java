@@ -18,7 +18,8 @@ public class ProjetoApplication {
 		SpringApplication.run(ProjetoApplication.class, args);
 		//Scanner sc = new Scanner(System.in);
 		//String login, senha;
-		boolean logou = false;
+		int escolha; // coloquei pra saber qual indice do menu
+		String cliente_logado = "0"; // mudei para string para identificar qual cliente logou pelo cpf
 		Endereco endereco = new Endereco("Rua Uniao Industria","Itaipava", 420,"Petropolis","Brasil", "bl 2");
 		Cartao cartao = new Cartao("a","s","12",455, "454");
 
@@ -50,15 +51,21 @@ public class ProjetoApplication {
 		linhas 18 e 19 nao são mais necessarias
 		*/
 		// Guardei o retorno da função em uma variavel, então se der true no metodo ele sai do looping
-		while(!logou){
-			logou = logar(lista_cliente);
+		while(cliente_logado.equals("0")){
+			cliente_logado = logar(lista_cliente);
 		}
 		Menu menu = new Menu();
-		menu.opcoes();
-		menu.verLista(lista_produto);
-			
+		escolha = menu.opcoes();
+		switch(escolha){
+			case 1:
+				menu.verLista(lista_produto);
+				break;
+			case 2:
+				menu.verCartoes(lista_cliente, cliente_logado);
+			}	
+
 		}
-		public static boolean logar(ArrayList<Cliente> lista_cliente ){
+		public static String logar(ArrayList<Cliente> lista_cliente){
 			Scanner sc2 = new Scanner(System.in);
 			String nome, senha;
 			System.out.println("Bem vindo" + "\n" + "Login" );
@@ -69,15 +76,14 @@ public class ProjetoApplication {
 			for (int i = 0; i < lista_cliente.size(); i++){
 				if (nome.equals(lista_cliente.get(i).getLogin())
 				 & senha.equals(lista_cliente.get(i).getSenha())){					
-						System.out.println("\nVocê está sendo direcionado");
-									
-						return true;
+						System.out.println("\nVocê está sendo direcionado");								
+						return lista_cliente.get(i).getCpf(); // retorna o cpf pra gente saber qual cliente esta logado
 				} else {
 					System.out.println("\nLogin ou Senha incorretos\n");
-					return false;
+					return "0";
 				}
 			}			
-			return false;
+			return "0";
 		}
 	}
 		
