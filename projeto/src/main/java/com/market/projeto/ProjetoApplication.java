@@ -8,6 +8,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import pessoa.Cliente;
 import pessoa.Funcionario;
+import site.Menu;
 import site.Produto;
 
 @SpringBootApplication
@@ -52,7 +53,9 @@ public class ProjetoApplication {
 		while(!logou){
 			logou = logar(lista_cliente);
 		}
-		verLista(lista_produto);
+		Menu menu = new Menu();
+		menu.opcoes();
+		menu.verLista(lista_produto);
 			
 		}
 		public static boolean logar(ArrayList<Cliente> lista_cliente ){
@@ -66,23 +69,16 @@ public class ProjetoApplication {
 			for (int i = 0; i < lista_cliente.size(); i++){
 				if (nome.equals(lista_cliente.get(i).getLogin())
 				 & senha.equals(lista_cliente.get(i).getSenha())){					
-						System.out.println("Você está sendo direcionado");			
+						System.out.println("\nVocê está sendo direcionado");
+									
 						return true;
 				} else {
-					System.out.println("Login ou Senha incorretos");
+					System.out.println("\nLogin ou Senha incorretos\n");
 					return false;
 				}
 			}			
 			return false;
 		}
-
-		// coloquei a lista de produtos em um metodo, passando a lista de produtos como parametro, criada na linha 35
-		public static void verLista(ArrayList <Produto> lista_produto){
-			for (int i =0; i <lista_produto.size();i++){
-				System.out.println((i + 1) + " " + lista_produto.get(i).getNome() + 
-				", descrição: " + lista_produto.get(i).getDescricao() + ", R$ " +
-				lista_produto.get(i).getValor());
-			}}
 	}
 		
 
