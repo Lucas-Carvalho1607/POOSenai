@@ -15,8 +15,8 @@ public class ProjetoApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(ProjetoApplication.class, args);
-		Scanner sc = new Scanner(System.in);
-		String login, senha;
+		//Scanner sc = new Scanner(System.in);
+		//String login, senha;
 		boolean logou = false;
 		Endereco endereco = new Endereco("Rua Uniao Industria","Itaipava", 420,"Petropolis","Brasil", "bl 2");
 		Cartao cartao = new Cartao("a","s","12",455, "454");
@@ -40,21 +40,19 @@ public class ProjetoApplication {
 		lista_produto.add(xbox);
 		lista_produto.add(pcGamer);
 		lista_produto.add(nSwitch);
-
+		/*
 		System.out.println("Bem vindo" + "\n" + "Login" );
 		login = sc.nextLine();
 		System.out.println("Senha: ");
 		senha = sc.nextLine();
-		
-		while(!logar(lista_cliente)){
-			logar(lista_cliente);
+		Retirei essas linhas pq o metodo ja escreve elas 
+		linhas 18 e 19 nao são mais necessarias
+		*/
+		// Guardei o retorno da função em uma variavel, então se der true no metodo ele sai do looping
+		while(!logou){
+			logou = logar(lista_cliente);
 		}
-		
-		
-		for (int i =0; i <lista_produto.size();i++){
-			System.out.println(lista_produto.get(i).getNome() + ", descrição: " + lista_produto.get(i).getDescricao() + ", R$ " +
-			lista_produto.get(i).getValor());
-		}
+		verLista(lista_produto);
 			
 		}
 		public static boolean logar(ArrayList<Cliente> lista_cliente ){
@@ -66,15 +64,25 @@ public class ProjetoApplication {
 			senha = sc2.nextLine();
 			
 			for (int i = 0; i < lista_cliente.size(); i++){
-				if (nome.equals(lista_cliente.get(i).getLogin())){
-				System.out.println("nome correto");
-				sc2.close();
-				return true;
-			}
-			}
-			sc2.close();
+				if (nome.equals(lista_cliente.get(i).getLogin())
+				 & senha.equals(lista_cliente.get(i).getSenha())){					
+						System.out.println("Você está sendo direcionado");			
+						return true;
+				} else {
+					System.out.println("Login ou Senha incorretos");
+					return false;
+				}
+			}			
 			return false;
 		}
+
+		// coloquei a lista de produtos em um metodo, passando a lista de produtos como parametro, criada na linha 35
+		public static void verLista(ArrayList <Produto> lista_produto){
+			for (int i =0; i <lista_produto.size();i++){
+				System.out.println((i + 1) + " " + lista_produto.get(i).getNome() + 
+				", descrição: " + lista_produto.get(i).getDescricao() + ", R$ " +
+				lista_produto.get(i).getValor());
+			}}
 	}
 		
 
