@@ -16,8 +16,7 @@ public class ProjetoApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(ProjetoApplication.class, args);
-		//Scanner sc = new Scanner(System.in);
-		//String login, senha;
+		boolean terminou = false;
 		int escolha; // coloquei pra saber qual indice do menu
 		String cliente_logado = "0"; // mudei para string para identificar qual cliente logou pelo cpf
 		Endereco endereco = new Endereco("Rua Uniao Industria","Itaipava", 420,"Petropolis","Brasil", "bl 2");
@@ -48,21 +47,34 @@ public class ProjetoApplication {
 		System.out.println("Senha: ");
 		senha = sc.nextLine();
 		Retirei essas linhas pq o metodo ja escreve elas 
-		linhas 18 e 19 nao são mais necessarias
 		*/
 		// Guardei o retorno da função em uma variavel, então se der true no metodo ele sai do looping
 		while(cliente_logado.equals("0")){
 			cliente_logado = logar(lista_cliente);
 		}
 		Menu menu = new Menu();
-		escolha = menu.opcoes();
-		switch(escolha){
-			case 1:
-				menu.verLista(lista_produto);
-				break;
-			case 2:
-				menu.verCartoes(lista_cliente, cliente_logado);
-			}	
+		while (!terminou){
+			escolha = menu.opcoes();
+			switch(escolha){
+				case 1:
+					menu.verLista(lista_produto);
+					break;
+				case 2:
+					menu.verCartoes(lista_cliente, cliente_logado);
+					break;
+				case 3:
+					menu.add_cliente(lista_cliente);
+					break;
+				case 4:
+					menu.add_produto(lista_produto);
+					break;
+				case 0:
+					terminou = true;
+					break;
+				default :
+					escolha = menu.opcoes();
+				}	
+			}
 
 		}
 		public static String logar(ArrayList<Cliente> lista_cliente){
@@ -76,7 +88,7 @@ public class ProjetoApplication {
 			for (int i = 0; i < lista_cliente.size(); i++){
 				if (nome.equals(lista_cliente.get(i).getLogin())
 				 & senha.equals(lista_cliente.get(i).getSenha())){					
-						System.out.println("\nVocê está sendo direcionado");								
+						System.out.println("\nVocê está sendo direcionado\n");								
 						return lista_cliente.get(i).getCpf(); // retorna o cpf pra gente saber qual cliente esta logado
 				} else {
 					System.out.println("\nLogin ou Senha incorretos\n");
