@@ -44,6 +44,39 @@ public class Menu {
                 System.out.println("CVV : " + lista_cliente.get(i).getCartao().getCvv()); 
             }
         }
-
     }
-}
+        // recebe a lista de cliente e devolve ela atualizada
+    public ArrayList<Cliente> add_cliente (ArrayList<Cliente> lista_cliente){
+        String nome, cpf, dataNasc, login, senha;
+        String cartao_nome, cartao_numero, cartao_dataValidade, cartao_cpf; // coloquei em outra linha pra facilitar
+        int cartao_cvv;
+        String end_rua, end_bairro, end_cidade, end_pais, end_complemento;
+        int end_num;
+        Scanner sc4 = new Scanner(System.in);
+        Scanner sc5 = new Scanner(System.in);
+        String frases2 [] = {"Nome: ", "CPF: ", "Data Nasc:", "Login: ", "Senha: ", "Numero: ", "Data Validade:",
+    "CVV: ", "Rua: ", "Bairro: ", "Cidade: ", "País: ", "Complemento: ", "Cadastro iniciado", "Cadastro realizado",
+    "Precisamos de um cartão", "Precisamos de um endereço"};
+
+        System.out.println(frases2[13] + "\n" + frases2[0]);
+        nome = sc4.nextLine();
+        cartao_nome = nome;
+        System.out.println(frases2[1]);
+        cpf = sc4.nextLine();
+        cartao_cpf = cpf;
+        System.out.println(frases2[2]);
+        dataNasc = sc4.nextLine();
+        System.out.println(frases2[3]);
+        login = sc4.nextLine();
+        System.out.println(frases2[4]);
+        senha = sc4.nextLine();
+        System.out.println(frases2[15] + "\n" + frases2[5]);
+        cartao_numero = sc4.nextLine();
+        System.out.println(frases2[6]);
+        cartao_dataValidade = sc4.nextLine();
+        // falta terminar o endereço e instanciar em um novo cliente 
+
+        return lista_cliente;
+        }
+    }
+  
